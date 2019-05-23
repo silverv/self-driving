@@ -23,7 +23,7 @@ driving = False
 pressed = False
 lower_color_bounds = (0, 28, 69)
 upper_color_bounds = (2, 198, 247)
-allvalue = 340
+allvalue = 270
 mean_min =allvalue
 mean_max = allvalue
 mean_ideal = allvalue
@@ -55,7 +55,7 @@ def drive():
                 ReleaseKeyPynput(D)
                 continue
             xs = [pixelpoint[0][0] for pixelpoint in pixelpoints]
-            mean = statistics.median(xs)
+            mean = min(xs, key=lambda x: abs(x-mean_ideal))
             added_time = 0
             print(mean)
             #if previous_mean == 0:
